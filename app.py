@@ -1,5 +1,5 @@
 from flask import Flask
-import trade_script.py
+import trade_script
 app = Flask(__name__)
 
 @app.route('/')

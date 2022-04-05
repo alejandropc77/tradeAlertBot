@@ -5,8 +5,8 @@ from email.message import EmailMessage
 from time import sleep
 from config import apiKey, apiSecurity
 from binan import init
-from binan import client
-from binan import ClientSHIBUS
+from binance import client
+#from binance import ClientSHIBUS
 
 # Alpaca Trading
 
@@ -162,13 +162,13 @@ def SellClose(margin):
  #       print(orders)
 
 
-    sold_confirm = false;
+    sold_confirm = False;
     #Analyze(margin);
     target_price = position_price - (position_price*margin);
     
     if (position_price >= target_price):
         Close_Position();
-        sold_confirm = true;
+        sold_confirm = True;
         print('purchase confirmed!');
     return sold_confirm
 
@@ -184,10 +184,10 @@ margin = float(uInput)
 uInput = input("Plese enter current position price\n")
 curr_position = float(uInput)
 
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "3053840202@pm.sprint.com")
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "tomas_canox@hotmail.com")
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "juanchobolano@gmail.com")
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "alejandropc77@gmail.com")
+#email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "3053840202@pm.sprint.com")
+#email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "tomas_canox@hotmail.com")
+#email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "juanchobolano@gmail.com")
+#email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "alejandropc77@gmail.com")
 
 sim_time = 50000000;
 buy_or_sell = 0;
