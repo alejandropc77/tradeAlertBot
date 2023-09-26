@@ -1,22 +1,25 @@
 # cook your dish here
+
+from alpaca.data.historical import CryptoHistoricalDataClient
+from alpaca.data.requests import CryptoBarsRequest
+from alpaca.data.timeframe import TimeFrame
 import datetime
 import smtplib
 from email.message import EmailMessage
 from time import sleep
-from config import apiKey, apiSecurity
-from binan import init
-from binan import client
-from binan import ClientSHIBUS
+
+
+from alpaca.trading import client as AlpacaClient
+import config
 
 # Alpaca Trading
-
 class trading_bot(object):
     def __init__(self):
-        self.key = 'PK1752PWHB7T2E98KUZE'
-        self.secret = 'gGcoiLNEPUzTM7KmbbW2YEg0bjC5bQciq9Tccfc4'
-        self.alpaca_endpoint = "https://paper-api.alpaca.markets"
-        self.api = tradeapi.REST(self.key, self.secret, self.alpaca_endpoint)
-        #self.symbol = input('Input a symbol')
+        self.key = config.API_KEY
+        self.secret = config.SECRET_KEY
+        self.alpaca_endpoint = "https://broker-api.sandbox.alpaca.markets"
+        self.api = AlpacaClient
+        self.symbol = input('Input a symbol')
         self.current_order = None
         self.last_price = 1
         self.curr_price = 1
@@ -183,20 +186,21 @@ uInput = input("Plese enter a margin (0.1 = 10%)\n")
 margin = float(uInput)
 uInput = input("Plese enter current position price\n")
 curr_position = float(uInput)
-
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "3053840202@pm.sprint.com")
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "tomas_canox@hotmail.com")
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "juanchobolano@gmail.com")
-email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "alejandropc77@gmail.com")
+#email_alert('FLY ME TO THE MOON', str("WELCOME TO THE *FLY ME TO THE MOON* ALERT SYSTEM. WILL TRIGGER WHEN SHIB IS 10 % UP\n\n https://open.spotify.com/track/1PVTvvxpSkyJWemW1CwVVk?si=224bf572462c4f06"), "alejandropc77@gmail.com")
 
 sim_time = 50000000;
 buy_or_sell = 0;
 
-
+## WTF IS THIS PLACEMENT
 while(True):
+    client = AlpacaClient
     buy_or_sell = 0
-    client = init(symbolName);
-    curr_price = client.get_avg_price(symbol = symbolName)
+    assetList = {"SPY, BTCUSD"}
+    myBot = trading_bot()
+    WL = client(client, assetList[0])
+
+    client.add_asset_to_watchlist_by_id(WL ,symbolName)
+    client.get_asset(symbolName)
     curr_price = float(curr_price['price'])
     print(symbolName)
     print(f'TIMESTAMP :: {datetime.datetime.now()}');
@@ -206,9 +210,6 @@ while(True):
     if(buy_or_sell == -1):
         confirm = BuyTake(curr_price, curr_position, margin);
         if confirm:
-            email_alert('SELL', str("The Asset {0} is at a high of ${1}FLY ME TO THE MOON".format(symbolName, curr_price )), "3053840202@pm.sprint.com")
-            email_alert('SELL', str("The Asset {0} is at a high of ${1}FLY ME TO THE MOON".format(symbolName, curr_price )), "tomas_canox@hotmail.com")
-            email_alert('SELL', str("The Asset {0} is at a high of ${1}FLY ME TO THE MOON".format(symbolName, curr_price )), "juanchobolano@gmail.com")
             email_alert('SELL', str("The Asset {0} is at a high of ${1}FLY ME TO THE MOON".format(symbolName, curr_price )), "alejandropc77@gmail.com")
 
 
